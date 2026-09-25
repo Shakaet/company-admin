@@ -1,7 +1,4 @@
-# Ala Uddin Admin Panel
 
-ALA UDDIN platform-এর জন্য নির্মিত একটি React + TypeScript ভিত্তিক Admin Dashboard।
-এখানে Product, Category, Brand, Attribute, Banner, Role, Staff এবং Auth সম্পর্কিত panel operations রয়েছে।
 
 ## Tech Stack
 
