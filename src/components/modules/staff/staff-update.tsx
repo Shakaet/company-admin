@@ -189,7 +189,7 @@ const StaffUpdate = ({
             if (!isOpen) closeModal();
           }}
         >
-          <DialogContent className="w-full min-w-[50%] max-h-[90vh] overflow-y-auto">
+          <DialogContent className="w-full min-w-[60%] max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="text-xl">Update Admin</DialogTitle>
             </DialogHeader>

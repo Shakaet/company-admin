@@ -239,7 +239,7 @@ const TeamMemberCreateModal = ({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="min-w-[60%] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add Team Member</DialogTitle>
         </DialogHeader>
@@ -413,7 +413,7 @@ const TeamMemberUpdateModal = ({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="min-w-[60%] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Update Team Member</DialogTitle>
         </DialogHeader>

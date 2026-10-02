@@ -182,7 +182,7 @@ const StatCreateModal = ({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent className="min-w-[60%] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add New Stat</DialogTitle>
         </DialogHeader>
@@ -256,7 +256,7 @@ const StatUpdateModal = ({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent className="min-w-[60%] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Update Stat</DialogTitle>
         </DialogHeader>

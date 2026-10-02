@@ -114,7 +114,7 @@ const HighlightFormModal = ({ open, onClose, item }: { open: boolean; onClose: (
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md sm:max-w-md">
+      <DialogContent className="min-w-[60%] max-h-[90vh] overflow-y-auto">
         <DialogHeader><DialogTitle>{item ? "Update Highlight" : "Add Highlight"}</DialogTitle></DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">

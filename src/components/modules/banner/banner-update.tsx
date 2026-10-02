@@ -34,7 +34,7 @@ const BannerUpdate = ({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent className="min-w-[60%] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Update Banner</DialogTitle>
         </DialogHeader>

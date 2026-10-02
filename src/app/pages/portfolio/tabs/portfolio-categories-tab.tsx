@@ -116,7 +116,7 @@ const CategoryFormModal = ({ open, onClose, item }: { open: boolean; onClose: (v
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md sm:max-w-md">
+      <DialogContent className="min-w-[60%] max-h-[90vh] overflow-y-auto">
         <DialogHeader><DialogTitle>{item ? "Update Category" : "Add Category"}</DialogTitle></DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2"><Label>Name</Label><Input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required /></div>
