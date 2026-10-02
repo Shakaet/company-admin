@@ -94,10 +94,10 @@ const DetailsModal = ({
                   <TableHead className="font-semibold text-start">
                     Product
                   </TableHead>
-                  <TableHead className="font-semibold">Unit</TableHead>
-                  <TableHead className="font-semibold ">Price</TableHead>
-                  <TableHead className="font-semibold ">Qty</TableHead>
-                  <TableHead className="font-semibold ">Total</TableHead>
+                  <TableHead className="font-semibold text-center">Unit</TableHead>
+                  <TableHead className="font-semibold text-center">Price</TableHead>
+                  <TableHead className="font-semibold text-center">Qty</TableHead>
+                  <TableHead className="font-semibold text-center">Total</TableHead>
                 </TableRow>
               </TableHeader>
 

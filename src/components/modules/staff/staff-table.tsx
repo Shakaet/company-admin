@@ -98,7 +98,7 @@ const StaffTable = ({
               {data?.map((item, index) => (
                 <TableRow
                   key={item?._id}
-                  className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0 text-center"
+                  className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0"
                 >
                   <TableCell className="text-center font-medium text-muted-foreground">
                     {serial(index)}
