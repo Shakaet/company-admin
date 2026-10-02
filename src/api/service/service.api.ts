@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "../base-api/base.api";
-import type { GetParams, IResponse } from "@/interface/common-interface";
+import type { GetParams, IPaginatedResponse } from "@/interface/common-interface";
 
 export interface IService {
   _id?: string;
@@ -42,7 +42,7 @@ export interface IServiceConsultation {
 // SERVICES
 // ----------------------------------------------------------------------------
 export const useGetServicesForAdmin = (params: GetParams) => {
-  return useQuery<IResponse<IService[]>>({
+  return useQuery<IPaginatedResponse<IService>>({
     queryKey: ["admin_services", params],
     queryFn: async () => {
       const response = await api.get("/services/admin", { params });
@@ -92,7 +92,7 @@ export const useDeleteService = () => {
 // CONSULTATIONS
 // ----------------------------------------------------------------------------
 export const useGetConsultationsForAdmin = (params: GetParams) => {
-  return useQuery<IResponse<IServiceConsultation[]>>({
+  return useQuery<IPaginatedResponse<IServiceConsultation>>({
     queryKey: ["admin_consultations", params],
     queryFn: async () => {
       const response = await api.get("/services/admin/consultations", { params });

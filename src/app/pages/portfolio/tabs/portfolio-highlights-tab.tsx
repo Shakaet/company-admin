@@ -13,7 +13,7 @@ import { Edit2 } from "lucide-react";
 import TableSkeleton from "@/components/skeleton/table-skeleton";
 import DeleteButton from "@/components/custom/delete-button";
 import CreateButton from "@/components/custom/create-button";
-import PaginationCustom from "@/components/custom/pagination";
+import Pagination from "@/components/custom/pagination";
 import useSerial from "@/helper/use-serial";
 
 export default function PortfolioHighlightsTab() {
@@ -90,7 +90,7 @@ export default function PortfolioHighlightsTab() {
         </div>
       </div>
 
-      <PaginationCustom currentPage={page} onPageChange={setPage} totalPages={Math.ceil(total / 10)} />
+      <Pagination page={page} setPage={setPage} limit={10} setLimit={() => {}} total={total} />
 
       {createOpen && <HighlightFormModal open={createOpen} onClose={setCreateOpen} />}
       {updateOpen && selected && <HighlightFormModal open={updateOpen} onClose={setUpdateOpen} item={selected} />}

@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "../base-api/base.api";
-import type { GetParams, IResponse } from "@/interface/common-interface";
+import type { GetParams, IPaginatedResponse, ISingleResponse } from "@/interface/common-interface";
 
 export interface IOurCompany {
   _id?: string;
@@ -43,7 +43,7 @@ export interface IFounderMessage {
 export const useGetCompany = () => {
   return useQuery({
     queryKey: ["about_company"],
-    queryFn: async (): Promise<IResponse<IOurCompany>> => {
+    queryFn: async (): Promise<ISingleResponse<IOurCompany>> => {
       const response = await api.get("/about/admin/company");
       return response.data;
     },
@@ -67,7 +67,7 @@ export const useCreateOrUpdateCompany = () => {
 export const useGetTeamMembers = (params: GetParams = {}) => {
   return useQuery({
     queryKey: ["about_team", params],
-    queryFn: async (): Promise<IResponse<any>> => { // using any because paginated
+    queryFn: async (): Promise<IPaginatedResponse<IOurTeam>> => {
       const response = await api.get("/about/admin/team", { params });
       return response.data;
     },
@@ -113,7 +113,7 @@ export const useDeleteTeamMember = () => {
 export const useGetFounderMessage = () => {
   return useQuery({
     queryKey: ["about_founder"],
-    queryFn: async (): Promise<IResponse<IFounderMessage>> => {
+    queryFn: async (): Promise<ISingleResponse<IFounderMessage>> => {
       const response = await api.get("/about/admin/founder-message");
       return response.data;
     },

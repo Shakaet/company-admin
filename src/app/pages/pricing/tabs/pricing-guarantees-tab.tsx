@@ -28,7 +28,7 @@ import {
 import TableSkeleton from "@/components/skeleton/table-skeleton";
 import DeleteButton from "@/components/custom/delete-button";
 import CreateButton from "@/components/custom/create-button";
-import PaginationCustom from "@/components/custom/pagination";
+import Pagination from "@/components/custom/pagination";
 import { useAdminPermission } from "@/helper/use-admin-permission";
 import { DateFormat } from "@/hooks/use-date-format";
 import { Edit2 } from "lucide-react";
@@ -146,10 +146,12 @@ export default function PricingGuaranteesTab() {
         </div>
       </div>
 
-      <PaginationCustom
-        currentPage={page}
-        onPageChange={setPage}
-        totalPages={Math.ceil(total / 10)}
+      <Pagination
+        page={page}
+        setPage={setPage}
+        limit={10}
+        setLimit={() => {}}
+        total={total}
       />
 
       {createOpen && (

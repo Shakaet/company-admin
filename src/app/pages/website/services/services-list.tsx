@@ -17,7 +17,7 @@ import DeleteButton from "@/components/custom/delete-button";
 import SearchInput from "@/components/custom/search-input";
 import CreateButton from "@/components/custom/create-button";
 import Header from "@/components/custom/header";
-import PaginationCustom from "@/components/custom/pagination";
+import Pagination from "@/components/custom/pagination";
 import { useAdminPermission } from "@/helper/use-admin-permission";
 import useSerial from "@/helper/use-serial";
 
@@ -25,7 +25,7 @@ export default function ServicesListPage() {
   const [page, setPage] = useState(1);
   const serial = useSerial(page, 10);
   const [searchTerm, setSearchTerm] = useState("");
-  const { data, isLoading, refetch } = useGetServicesForAdmin({ page, limit: 10, searchterm: searchTerm });
+  const { data, isLoading, refetch } = useGetServicesForAdmin({ page, limit: 10, searchTerm });
   const { can } = useAdminPermission();
   const { mutateAsync: deleteItem } = useDeleteService();
 
@@ -119,7 +119,7 @@ export default function ServicesListPage() {
         </div>
       </div>
 
-      <PaginationCustom currentPage={page} onPageChange={setPage} totalPages={Math.ceil(total / 10)} />
+      <Pagination page={page} setPage={setPage} limit={10} setLimit={() => {}} total={total} />
 
       {createOpen && <ServiceFormModal open={createOpen} onClose={setCreateOpen} />}
       {updateOpen && <ServiceFormModal open={updateOpen} onClose={setUpdateOpen} item={selectedItem} />}

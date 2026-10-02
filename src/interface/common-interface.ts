@@ -8,10 +8,30 @@ export interface IResponse<T> {
   totalData?: number;
 }
 
+export interface IPaginatedResponse<T> {
+  statusCode: number;
+  success: boolean;
+  message: string;
+  data: {
+    data: T[];
+    total: number;
+    page: number;
+    limit: number;
+  };
+}
+
+export interface ISingleResponse<T> {
+  statusCode: number;
+  success: boolean;
+  message: string;
+  data: T;
+}
+
 export interface GetParams {
   page?: number;
   limit?: number;
   searchTerm?: string;
+  searchterm?: string;
   user_type?: string;
   query_type?: string;
   is_medicine_product?: boolean;

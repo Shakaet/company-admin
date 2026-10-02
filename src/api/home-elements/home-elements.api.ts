@@ -1,4 +1,4 @@
-import type { GetParams, IResponse } from "@/interface/common-interface";
+import type { GetParams, IPaginatedResponse } from "@/interface/common-interface";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "../base-api/base.api";
 
@@ -59,7 +59,7 @@ export interface IWhyChooseUs {
 export const useGetPartners = (params: GetParams = {}) => {
   return useQuery({
     queryKey: ["partners", params],
-    queryFn: async (): Promise<IResponse<IPartner[]>> => {
+    queryFn: async (): Promise<IPaginatedResponse<IPartner>> => {
       const response = await api.get("/home-elements/admin/partners", { params });
       return response.data;
     },
@@ -105,7 +105,7 @@ export const useDeletePartner = () => {
 export const useGetTechStacks = (params: GetParams = {}) => {
   return useQuery({
     queryKey: ["techStacks", params],
-    queryFn: async (): Promise<IResponse<ITechStack[]>> => {
+    queryFn: async (): Promise<IPaginatedResponse<ITechStack>> => {
       const response = await api.get("/home-elements/admin/tech-stack", { params });
       return response.data;
     },
@@ -151,7 +151,7 @@ export const useDeleteTechStack = () => {
 export const useGetStats = (params: GetParams = {}) => {
   return useQuery({
     queryKey: ["stats", params],
-    queryFn: async (): Promise<IResponse<IStat[]>> => {
+    queryFn: async (): Promise<IPaginatedResponse<IStat>> => {
       const response = await api.get("/home-elements/admin/stats", { params });
       return response.data;
     },
@@ -197,7 +197,7 @@ export const useDeleteStat = () => {
 export const useGetTestimonials = (params: GetParams = {}) => {
   return useQuery({
     queryKey: ["testimonials", params],
-    queryFn: async (): Promise<IResponse<ITestimonial[]>> => {
+    queryFn: async (): Promise<IPaginatedResponse<ITestimonial>> => {
       const response = await api.get("/home-elements/admin/testimonials", { params });
       return response.data;
     },
@@ -243,7 +243,7 @@ export const useDeleteTestimonial = () => {
 export const useGetWhyChooseUs = (params: GetParams = {}) => {
   return useQuery({
     queryKey: ["whyChooseUs", params],
-    queryFn: async (): Promise<IResponse<IWhyChooseUs[]>> => {
+    queryFn: async (): Promise<IPaginatedResponse<IWhyChooseUs>> => {
       const response = await api.get("/home-elements/admin/why-choose-us", { params });
       return response.data;
     },

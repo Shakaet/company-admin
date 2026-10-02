@@ -7,7 +7,7 @@ import { useAdminPermission } from "@/helper/use-admin-permission";
 import { DateFormat } from "@/hooks/use-date-format";
 import TableSkeleton from "@/components/skeleton/table-skeleton";
 import Header from "@/components/custom/header";
-import PaginationCustom from "@/components/custom/pagination";
+import Pagination from "@/components/custom/pagination";
 import useSerial from "@/helper/use-serial";
 
 export default function ConsultationListPage() {
@@ -95,7 +95,7 @@ export default function ConsultationListPage() {
         </div>
       </div>
 
-      <PaginationCustom currentPage={page} onPageChange={setPage} totalPages={Math.ceil(total / 10)} />
+      <Pagination page={page} setPage={setPage} limit={10} setLimit={() => {}} total={total} />
     </div>
   );
 }

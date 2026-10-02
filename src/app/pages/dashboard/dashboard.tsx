@@ -1,5 +1,4 @@
-import { Sparkles, Globe, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Sparkles } from "lucide-react";
 
 export default function Dashboard() {
   return (

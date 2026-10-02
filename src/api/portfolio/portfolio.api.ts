@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "../base-api/base.api";
-import type { GetParams, IResponse } from "@/interface/common-interface";
+import type { GetParams, IPaginatedResponse, IResponse } from "@/interface/common-interface";
 
 export interface IPortfolioHighlight {
   _id?: string;
@@ -39,7 +39,7 @@ export interface IProject {
 
 // --- Highlights ---
 export const useGetHighlightsForAdmin = (params: GetParams) =>
-  useQuery<IResponse<IPortfolioHighlight[]>>({
+  useQuery<IPaginatedResponse<IPortfolioHighlight>>({
     queryKey: ["admin_portfolio_highlights", params],
     queryFn: async () => (await api.get("/portfolio/admin/highlights", { params })).data,
   });
@@ -72,7 +72,7 @@ export const useDeleteHighlight = () => {
 
 // --- Categories ---
 export const useGetCategoriesForAdmin = (params: GetParams) =>
-  useQuery<IResponse<IProjectCategory[]>>({
+  useQuery<IPaginatedResponse<IProjectCategory>>({
     queryKey: ["admin_portfolio_categories", params],
     queryFn: async () => (await api.get("/portfolio/admin/categories", { params })).data,
   });
@@ -111,7 +111,7 @@ export const useDeleteCategory = () => {
 
 // --- Projects ---
 export const useGetProjectsForAdmin = (params: GetParams) =>
-  useQuery<IResponse<IProject[]>>({
+  useQuery<IPaginatedResponse<IProject>>({
     queryKey: ["admin_portfolio_projects", params],
     queryFn: async () => (await api.get("/portfolio/admin/projects", { params })).data,
   });

@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "../base-api/base.api";
-import type { GetParams, IResponse } from "@/interface/common-interface";
+import type { GetParams, IPaginatedResponse } from "@/interface/common-interface";
 
 export interface IPricingPlan {
   _id?: string;
@@ -32,7 +32,7 @@ export interface IPricingGuarantee {
 
 // --- Plans ---
 export const useGetPlansForAdmin = (params: GetParams) =>
-  useQuery<IResponse<IPricingPlan[]>>({
+  useQuery<IPaginatedResponse<IPricingPlan>>({
     queryKey: ["admin_pricing_plans", params],
     queryFn: async () => (await api.get("/pricing/admin/plans", { params })).data,
   });
@@ -65,7 +65,7 @@ export const useDeletePlan = () => {
 
 // --- Guarantees ---
 export const useGetGuaranteesForAdmin = (params: GetParams) =>
-  useQuery<IResponse<IPricingGuarantee[]>>({
+  useQuery<IPaginatedResponse<IPricingGuarantee>>({
     queryKey: ["admin_pricing_guarantees", params],
     queryFn: async () => (await api.get("/pricing/admin/guarantees", { params })).data,
   });

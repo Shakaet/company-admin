@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Layers, FolderOpen, Star } from "lucide-react";
 import PortfolioProjectsTab from "./tabs/portfolio-projects-tab";

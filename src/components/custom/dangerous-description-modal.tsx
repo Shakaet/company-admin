@@ -1,4 +1,8 @@
-import type { IProduct } from "@/api/product/product.api";
+export interface IProduct {
+  product_name_en?: string;
+  product_description_en?: string;
+  product_description_bn?: string;
+}
 import {
   Dialog,
   DialogContent,

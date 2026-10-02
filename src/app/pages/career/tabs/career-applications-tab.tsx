@@ -3,7 +3,6 @@ import {
   useGetApplicationsForAdmin,
   useUpdateApplicationStatus,
 } from "@/api/career/career.api";
-import { Badge } from "@/components/ui/badge";
 import {
   Select,
   SelectContent,
@@ -20,22 +19,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import TableSkeleton from "@/components/skeleton/table-skeleton";
-import PaginationCustom from "@/components/custom/pagination";
+import Pagination from "@/components/custom/pagination";
 import { useAdminPermission } from "@/helper/use-admin-permission";
 import { DateFormat } from "@/hooks/use-date-format";
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import useSerial from "@/helper/use-serial";
 
-const statusColors: Record<
-  string,
-  "default" | "secondary" | "destructive" | "outline"
-> = {
-  pending: "outline",
-  reviewed: "default",
-  rejected: "destructive",
-  hired: "secondary",
-};
 
 export default function CareerApplicationsTab() {
   const [page, setPage] = useState(1);
@@ -154,10 +144,12 @@ export default function CareerApplicationsTab() {
         </div>
       </div>
 
-      <PaginationCustom
-        currentPage={page}
-        onPageChange={setPage}
-        totalPages={Math.ceil(total / 10)}
+      <Pagination
+        page={page}
+        setPage={setPage}
+        limit={10}
+        setLimit={() => {}}
+        total={total}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "../base-api/base.api";
-import type { GetParams, IResponse } from "@/interface/common-interface";
+import type { GetParams, IPaginatedResponse } from "@/interface/common-interface";
 
 export interface ICareerJob {
   _id?: string;
@@ -47,7 +47,7 @@ export interface IJobApplication {
 
 // --- Jobs ---
 export const useGetJobsForAdmin = (params: GetParams) =>
-  useQuery<IResponse<ICareerJob[]>>({
+  useQuery<IPaginatedResponse<ICareerJob>>({
     queryKey: ["admin_career_jobs", params],
     queryFn: async () => (await api.get("/career/admin/jobs", { params })).data,
   });
@@ -80,7 +80,7 @@ export const useDeleteJob = () => {
 
 // --- Applications ---
 export const useGetApplicationsForAdmin = (params: GetParams & { jobId?: string }) =>
-  useQuery<IResponse<IJobApplication[]>>({
+  useQuery<IPaginatedResponse<IJobApplication>>({
     queryKey: ["admin_career_applications", params],
     queryFn: async () => (await api.get("/career/applications", { params })).data,
   });
