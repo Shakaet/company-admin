@@ -143,4 +143,12 @@ export const sidebarMenu = [
       },
     ],
   },
+
+  // CONTACT MANAGEMENT
+  {
+    title: "Contact Submissions",
+    url: "/contact",
+    icon: MessageSquare,
+    permission: "contact_show",
+  },
 ];

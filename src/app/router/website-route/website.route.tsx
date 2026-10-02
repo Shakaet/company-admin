@@ -11,6 +11,7 @@ const ConsultationListPage = lazy(() => import("@/app/pages/website/services/con
 const PortfolioPage = lazy(() => import("@/app/pages/portfolio/portfolio"));
 const PricingPage = lazy(() => import("@/app/pages/pricing/pricing"));
 const CareerPage = lazy(() => import("@/app/pages/career/career"));
+const ContactListPage = lazy(() => import("@/app/pages/contact/contact-list"));
 
 const WebsiteRoutes = [
   {
@@ -55,6 +56,10 @@ const WebsiteRoutes = [
       {
         path: "career",
         element: <CareerPage />,
+      },
+      {
+        path: "contact",
+        element: <ContactListPage />,
       },
     ],
   },
