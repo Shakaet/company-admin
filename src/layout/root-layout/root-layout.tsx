@@ -6,7 +6,7 @@ type RouteHandle = {
   title?: string;
 };
 
-const DEFAULT_TITLE = "Ala Uddin Admin";
+const DEFAULT_TITLE = "Company Admin";
 
 const Title = () => {
   const matches = useMatches() as UIMatch<unknown, RouteHandle>[];
