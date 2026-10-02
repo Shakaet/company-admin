@@ -47,6 +47,12 @@ export const sidebarMenu = [
         icon: ImagePlus,
         permission: "banner_show",
       },
+      {
+        title: "Home Elements",
+        url: "/website/home-elements",
+        icon: Globe,
+        permission: "home_show",
+      },
     ],
   },
 ];

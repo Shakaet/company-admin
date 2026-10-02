@@ -244,9 +244,19 @@ const PermissionData = [
         description: "View home page dynamic elements",
       },
       {
-        type_name: "Update Home Elements",
+        type_name: "Create Home Elements",
         type_value: "home_create",
+        description: "Create new home page dynamic elements",
+      },
+      {
+        type_name: "Update Home Elements",
+        type_value: "home_update",
         description: "Update home page dynamic elements",
+      },
+      {
+        type_name: "Delete Home Elements",
+        type_value: "home_delete",
+        description: "Delete home page dynamic elements",
       },
     ],
   },
