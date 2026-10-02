@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import { Bell, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +24,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useAuth } from "@/context/auth-context";
-import { useAdminPermission } from "@/helper/use-admin-permission";
 import { useBreadcrumbs } from "@/hooks/use-bread-crumbs";
 import { useEffect, useRef } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
@@ -48,7 +47,6 @@ const AdminContent = () => {
     previousPathRef.current = pathname;
   }, [pathname, setOpen]);
 
-  const { can } = useAdminPermission();
 
   const ThemeToggle = () => {
     const { theme, setTheme } = useTheme();

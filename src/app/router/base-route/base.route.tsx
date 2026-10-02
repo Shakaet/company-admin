@@ -7,6 +7,7 @@ import DashboardRoutes from "../admin-route/admin.route";
 import AuthRoute from "../auth-route/auth.route";
 import PrivateRoute from "../private-route/private.route";
 import StaffRoutes from "../staff-route/staff.route";
+import WebsiteRoutes from "../website-route/website.route";
 const NotFound = lazy(() => import("@/app/pages/not-found/not-found"));
 const Unauthorized = lazy(
   () => import("@/app/pages/unauthorized/Unauthorized"),
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
             children: [
               ...DashboardRoutes,
               ...StaffRoutes,
+              ...WebsiteRoutes,
             ],
           },
         ],
