@@ -1,4 +1,4 @@
-import { LayoutDashboard, ShieldCheck, Users } from "lucide-react";
+import { LayoutDashboard, ShieldCheck, Users, Globe, ImagePlus } from "lucide-react";
 
 export const sidebarMenu = [
   // DASHBOARD
@@ -37,22 +37,16 @@ export const sidebarMenu = [
   },
 
   // WEBSITE MANAGEMENT
-  // {
-  //   title: "Website Management",
-  //   icon: Globe,
-  //   items: [
-  //     {
-  //       title: "Banners",
-  //       url: "/website/banners",
-  //       icon: ImagePlus,
-  //       permission: "admin_banner_show",
-  //     },
-  //     {
-  //       title: "Settings",
-  //       url: "/website/settings",
-  //       icon: Settings2,
-  //       permission: "admin_setting_show",
-  //     },
-  //   ],
-  // },
+  {
+    title: "Website Management",
+    icon: Globe,
+    items: [
+      {
+        title: "Banners",
+        url: "/website/banners",
+        icon: ImagePlus,
+        permission: "banner_show",
+      },
+    ],
+  },
 ];
