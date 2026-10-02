@@ -6,6 +6,8 @@ const HomeElementsPage = lazy(() => import("@/app/pages/website/home-elements/ho
 const OurCompanyPage = lazy(() => import("@/app/pages/website/about/our-company"));
 const OurTeamPage = lazy(() => import("@/app/pages/website/about/our-team"));
 const FounderMessagePage = lazy(() => import("@/app/pages/website/about/founder-message"));
+const ServicesListPage = lazy(() => import("@/app/pages/website/services/services-list"));
+const ConsultationListPage = lazy(() => import("@/app/pages/website/services/consultation-list"));
 
 const WebsiteRoutes = [
   {
@@ -30,6 +32,14 @@ const WebsiteRoutes = [
       {
         path: "website/about/founder-message",
         element: <FounderMessagePage />,
+      },
+      {
+        path: "services/all",
+        element: <ServicesListPage />,
+      },
+      {
+        path: "services/consultations",
+        element: <ConsultationListPage />,
       },
     ],
   },

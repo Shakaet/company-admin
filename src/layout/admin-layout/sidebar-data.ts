@@ -56,6 +56,26 @@ export const sidebarMenu = [
     ],
   },
   
+  // SERVICES MANAGEMENT
+  {
+    title: "Services Management",
+    icon: Building2,
+    items: [
+      {
+        title: "All Services",
+        url: "/services/all",
+        icon: UserCircle,
+        permission: "service_show",
+      },
+      {
+        title: "Consultations",
+        url: "/services/consultations",
+        icon: MessageSquare,
+        permission: "service_show",
+      },
+    ],
+  },
+  
   // ABOUT MANAGEMENT
   {
     title: "About Us",
