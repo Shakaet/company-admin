@@ -8,6 +8,9 @@ const OurTeamPage = lazy(() => import("@/app/pages/website/about/our-team"));
 const FounderMessagePage = lazy(() => import("@/app/pages/website/about/founder-message"));
 const ServicesListPage = lazy(() => import("@/app/pages/website/services/services-list"));
 const ConsultationListPage = lazy(() => import("@/app/pages/website/services/consultation-list"));
+const PortfolioPage = lazy(() => import("@/app/pages/portfolio/portfolio"));
+const PricingPage = lazy(() => import("@/app/pages/pricing/pricing"));
+const CareerPage = lazy(() => import("@/app/pages/career/career"));
 
 const WebsiteRoutes = [
   {
@@ -40,6 +43,18 @@ const WebsiteRoutes = [
       {
         path: "services/consultations",
         element: <ConsultationListPage />,
+      },
+      {
+        path: "portfolio",
+        element: <PortfolioPage />,
+      },
+      {
+        path: "pricing",
+        element: <PricingPage />,
+      },
+      {
+        path: "career",
+        element: <CareerPage />,
       },
     ],
   },

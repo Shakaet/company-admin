@@ -1,4 +1,4 @@
-import { LayoutDashboard, ShieldCheck, Users, Globe, ImagePlus, Info, Building2, UserCircle, MessageSquare } from "lucide-react";
+import { LayoutDashboard, ShieldCheck, Users, Globe, ImagePlus, Info, Building2, UserCircle, MessageSquare, Layers, DollarSign, Briefcase } from "lucide-react";
 
 export const sidebarMenu = [
   // DASHBOARD
@@ -98,6 +98,48 @@ export const sidebarMenu = [
         url: "/website/about/founder-message",
         icon: MessageSquare,
         permission: "about_show",
+      },
+    ],
+  },
+
+  // PORTFOLIO MANAGEMENT
+  {
+    title: "Portfolio",
+    icon: Layers,
+    items: [
+      {
+        title: "Projects",
+        url: "/portfolio",
+        icon: Layers,
+        permission: "portfolio_show",
+      },
+    ],
+  },
+
+  // PRICING MANAGEMENT
+  {
+    title: "Pricing",
+    icon: DollarSign,
+    items: [
+      {
+        title: "Plans & Guarantees",
+        url: "/pricing",
+        icon: DollarSign,
+        permission: "pricing_show",
+      },
+    ],
+  },
+
+  // CAREER MANAGEMENT
+  {
+    title: "Career",
+    icon: Briefcase,
+    items: [
+      {
+        title: "Job Posts & Applications",
+        url: "/career",
+        icon: Briefcase,
+        permission: "career_show",
       },
     ],
   },

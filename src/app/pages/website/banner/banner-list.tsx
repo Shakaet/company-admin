@@ -1,5 +1,6 @@
 import { useGetBanner } from "@/api/banner/banner.api";
 import CreateButton from "@/components/custom/create-button";
+import Header from "@/components/custom/header";
 import BannerCreate from "@/components/modules/banner/banner-create";
 import BannerTable from "@/components/modules/banner/banner-table";
 import BannerUpdate from "@/components/modules/banner/banner-update";
@@ -20,12 +21,9 @@ export default function BannerList() {
   };
 
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900">Banners</h1>
-          <p className="text-slate-500 text-sm mt-1">Manage homepage slider images</p>
-        </div>
+    <div className="space-y-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <Header title="Banners" description="Manage homepage slider images" />
         {can("banner_create") && (
           <CreateButton
             onClick={() => setCreateModalOpen(true)}
@@ -40,11 +38,11 @@ export default function BannerList() {
         onEdit={handleEdit}
       />
 
-      <BannerCreate 
-        open={createModalOpen} 
-        onClose={setCreateModalOpen} 
+      <BannerCreate
+        open={createModalOpen}
+        onClose={setCreateModalOpen}
       />
-      
+
       {editingBanner && (
         <BannerUpdate
           open={updateModalOpen}

@@ -26,90 +26,105 @@ const BannerTable = ({
   onEdit: (banner: any) => void;
 }) => {
   const { can } = useAdminPermission();
-  const { mutateAsync: deleteBanner, isPending: deleteLoading } = useDeleteBanner();
-  const { mutateAsync: toggleStatus, isPending: statusLoading } = useToggleBannerStatus();
+  const { mutateAsync: deleteBanner } = useDeleteBanner();
+  const { mutateAsync: toggleStatus, isPending: statusLoading } =
+    useToggleBannerStatus();
 
   return (
-    <div className="rounded-md border bg-white shadow-sm">
-      <Table>
-        <TableHeader className="bg-slate-50">
-          <TableRow>
-            <TableHead className="text-center font-semibold">Image</TableHead>
-            <TableHead className="text-center font-semibold">Status</TableHead>
-            <TableHead className="text-center font-semibold">Created At</TableHead>
-            {(can("banner_update") || can("banner_delete")) && (
-              <TableHead className="text-right font-semibold">Actions</TableHead>
-            )}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {isLoading ? (
-            <TableRow>
-              <TableCell colSpan={4}>
-                <TableSkeleton rows={5} columns={4} />
-              </TableCell>
-            </TableRow>
-          ) : bannerData?.length === 0 ? (
-            <TableRow>
-              <TableCell colSpan={4} className="h-24 text-center text-slate-500">
-                No banners found.
-              </TableCell>
-            </TableRow>
-          ) : (
-            bannerData.map((banner) => (
-              <TableRow key={banner._id}>
-                <TableCell>
-                  <div className="mx-auto w-32 h-16 relative rounded-md overflow-hidden bg-slate-100 border flex items-center justify-center">
-                    {banner.banner_image ? (
-                      <img
-                        src={banner.banner_image}
-                        alt="Banner"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <ImageIcon className="w-5 h-5 text-slate-400" />
-                    )}
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div className="flex items-center justify-center space-x-2">
-                    <Switch
-                      checked={banner.status === "active"}
-                      onCheckedChange={() => toggleStatus(banner._id)}
-                      disabled={statusLoading || !can("banner_update")}
-                    />
-                    <Badge variant={banner.status === "active" ? "default" : "secondary"}>
-                      {banner.status}
-                    </Badge>
-                  </div>
-                </TableCell>
-                <TableCell className="text-center">{DateFormat(banner.createdAt)}</TableCell>
+    <div className="relative w-full overflow-hidden rounded-lg border border-border bg-card shadow-md">
+      <div className="overflow-x-auto">
+        {isLoading ? (
+          <TableSkeleton columns={4} rows={5} />
+        ) : bannerData?.length === 0 ? (
+          <div className="flex items-center justify-center py-16">
+            <div className="text-center">
+              <p className="text-lg font-medium text-muted-foreground">No banners found</p>
+              <p className="text-sm text-muted-foreground/70 mt-1">
+                Upload a new banner to get started
+              </p>
+            </div>
+          </div>
+        ) : (
+          <Table className="min-w-full">
+            <TableHeader>
+              <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                <TableHead className="text-center font-semibold">Image</TableHead>
+                <TableHead className="text-center font-semibold">Status</TableHead>
+                <TableHead className="text-center font-semibold">Created At</TableHead>
                 {(can("banner_update") || can("banner_delete")) && (
-                  <TableCell className="text-right">
-                    <div className="flex items-center justify-end gap-2">
-                      {can("banner_update") && (
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          onClick={() => onEdit(banner)}
-                        >
-                          <Pencil className="w-4 h-4 text-blue-600" />
-                        </Button>
-                      )}
-                      {can("banner_delete") && (
-                        <DeleteButton
-                          onDelete={() => deleteBanner(banner._id)}
-                          disabled={deleteLoading}
+                  <TableHead className="text-right font-semibold">Actions</TableHead>
+                )}
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {bannerData.map((banner) => (
+                <TableRow
+                  key={banner._id}
+                  className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0"
+                >
+                  <TableCell>
+                    <div className="mx-auto w-32 h-16 relative rounded-md overflow-hidden bg-muted border border-border flex items-center justify-center">
+                      {banner.banner_image ? (
+                        <img
+                          src={banner.banner_image}
+                          alt="Banner"
+                          className="w-full h-full object-cover"
                         />
+                      ) : (
+                        <ImageIcon className="w-5 h-5 text-muted-foreground" />
                       )}
                     </div>
                   </TableCell>
-                )}
-              </TableRow>
-            ))
-          )}
-        </TableBody>
-      </Table>
+                  <TableCell>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Switch
+                        checked={banner.status === "active"}
+                        onCheckedChange={() => toggleStatus(banner._id)}
+                        disabled={statusLoading || !can("banner_update")}
+                      />
+                      <Badge
+                        variant={
+                          banner.status === "active" ? "default" : "secondary"
+                        }
+                      >
+                        {banner.status}
+                      </Badge>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-center text-muted-foreground">
+                    {DateFormat(banner.createdAt)}
+                  </TableCell>
+                  {(can("banner_update") || can("banner_delete")) && (
+                    <TableCell className="text-right">
+                      <div className="flex items-center justify-end gap-2">
+                        {can("banner_update") && (
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => onEdit(banner)}
+                            className="hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 dark:hover:bg-blue-950 dark:hover:text-blue-400 transition-colors"
+                          >
+                            <Pencil className="w-4 h-4" />
+                          </Button>
+                        )}
+                        {can("banner_delete") && (
+                          <DeleteButton
+                            title="Delete Banner"
+                            description="This banner image will be permanently deleted."
+                            onDelete={async () => {
+                              await deleteBanner(banner._id);
+                            }}
+                          />
+                        )}
+                      </div>
+                    </TableCell>
+                  )}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )}
+      </div>
     </div>
   );
 };
