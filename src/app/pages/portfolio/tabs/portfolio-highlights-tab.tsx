@@ -35,7 +35,7 @@ export default function PortfolioHighlightsTab() {
 
       <div className="relative w-full overflow-hidden rounded-lg border border-border bg-card shadow-md">
         <div className="overflow-x-auto">
-          {isLoading ? <TableSkeleton columns={4} rows={5} /> : !items.length ? (
+          {isLoading ? <TableSkeleton columns={3} rows={5} /> : !items.length ? (
             <div className="flex items-center justify-center py-16">
               <div className="text-center">
                 <p className="text-lg font-medium text-muted-foreground">No highlights found</p>
@@ -46,7 +46,6 @@ export default function PortfolioHighlightsTab() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
-                  <TableHead className="font-semibold">Icon</TableHead>
                   <TableHead className="font-semibold text-center">Value</TableHead>
                   <TableHead className="font-semibold text-center">Label</TableHead>
                   <TableHead className="font-semibold text-center">Status</TableHead>
@@ -59,7 +58,6 @@ export default function PortfolioHighlightsTab() {
               <TableBody>
                 {items.map((item: any) => (
                   <TableRow key={item._id} className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0">
-                    <TableCell><code className="text-xs bg-muted px-2 py-1 rounded">{item.icon}</code></TableCell>
                     <TableCell className="text-center font-semibold">{item.value}</TableCell>
                     <TableCell className="text-center text-muted-foreground">{item.label}</TableCell>
                     <TableCell className="text-center"><Badge variant={item.status === "active" ? "default" : "secondary"}>{item.status}</Badge></TableCell>
@@ -99,10 +97,10 @@ export default function PortfolioHighlightsTab() {
 const HighlightFormModal = ({ open, onClose, item }: { open: boolean; onClose: (v: boolean) => void; item?: any }) => {
   const { mutateAsync: create, isPending: isCreating } = useCreateHighlight();
   const { mutateAsync: update, isPending: isUpdating } = useUpdateHighlight();
-  const [form, setForm] = useState<Partial<IPortfolioHighlight>>({ icon: "", value: "", label: "", status: "active" });
+  const [form, setForm] = useState<Partial<IPortfolioHighlight>>({ value: "", label: "", status: "active" });
 
   useEffect(() => {
-    if (item) setForm({ icon: item.icon, value: item.value, label: item.label, status: item.status });
+    if (item) setForm({ value: item.value, label: item.label, status: item.status });
   }, [item]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -119,7 +117,6 @@ const HighlightFormModal = ({ open, onClose, item }: { open: boolean; onClose: (
       <DialogContent className="max-w-md sm:max-w-md">
         <DialogHeader><DialogTitle>{item ? "Update Highlight" : "Add Highlight"}</DialogTitle></DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2"><Label>Icon (lucide name)</Label><Input value={form.icon} onChange={e => setForm({ ...form, icon: e.target.value })} placeholder="e.g. Trophy" required /></div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2"><Label>Value</Label><Input value={form.value} onChange={e => setForm({ ...form, value: e.target.value })} placeholder="e.g. 200+" required /></div>
             <div className="space-y-2"><Label>Label</Label><Input value={form.label} onChange={e => setForm({ ...form, label: e.target.value })} placeholder="e.g. Projects Done" required /></div>

@@ -8,6 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useAdminPermission } from "@/helper/use-admin-permission";
+import { generateSlug } from "@/helper/slugify";
 import { DateFormat } from "@/hooks/use-date-format";
 import { Edit2 } from "lucide-react";
 import TableSkeleton from "@/components/skeleton/table-skeleton";
@@ -97,17 +98,18 @@ export default function PortfolioCategoriesTab() {
 const CategoryFormModal = ({ open, onClose, item }: { open: boolean; onClose: (v: boolean) => void; item?: any }) => {
   const { mutateAsync: create, isPending: isCreating } = useCreateCategory();
   const { mutateAsync: update, isPending: isUpdating } = useUpdateCategory();
-  const [form, setForm] = useState<Partial<IProjectCategory>>({ name: "", value: "", status: "active" });
+  const [form, setForm] = useState<Partial<IProjectCategory>>({ name: "", status: "active" });
 
   useEffect(() => {
-    if (item) setForm({ name: item.name, value: item.value, status: item.status });
+    if (item) setForm({ name: item.name, status: item.status });
   }, [item]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      if (item?._id) await update({ id: item._id, payload: form });
-      else await create(form);
+      const payload = { ...form, value: generateSlug(form.name || "") };
+      if (item?._id) await update({ id: item._id, payload });
+      else await create(payload);
       onClose(false);
     } catch (err) { console.error(err); }
   };
@@ -118,7 +120,6 @@ const CategoryFormModal = ({ open, onClose, item }: { open: boolean; onClose: (v
         <DialogHeader><DialogTitle>{item ? "Update Category" : "Add Category"}</DialogTitle></DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2"><Label>Name</Label><Input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required /></div>
-          <div className="space-y-2"><Label>Value (slug)</Label><Input value={form.value} onChange={e => setForm({ ...form, value: e.target.value })} placeholder="e.g. web-development" required /></div>
           <div className="space-y-2">
             <Label>Status</Label>
             <select className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground" value={form.status} onChange={e => setForm({ ...form, status: e.target.value as any })}>

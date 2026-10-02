@@ -4,7 +4,7 @@ import type { GetParams, IResponse } from "@/interface/common-interface";
 
 export interface IPortfolioHighlight {
   _id?: string;
-  icon: string;
+  icon?: string;
   value: string;
   label: string;
   status: "active" | "inactive";
