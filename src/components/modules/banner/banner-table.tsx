@@ -48,6 +48,7 @@ const BannerTable = ({
           <Table className="min-w-full">
             <TableHeader>
               <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                <TableHead className="w-16 text-center font-semibold">#</TableHead>
                 <TableHead className="text-center font-semibold">Image</TableHead>
                 <TableHead className="text-center font-semibold">Status</TableHead>
                 <TableHead className="text-center font-semibold">Created At</TableHead>
@@ -57,11 +58,12 @@ const BannerTable = ({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {bannerData.map((banner) => (
+              {bannerData.map((banner, index) => (
                 <TableRow
                   key={banner._id}
                   className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0"
                 >
+                  <TableCell className="text-center font-medium text-muted-foreground">{index + 1}</TableCell>
                   <TableCell>
                     <div className="mx-auto w-32 h-16 relative rounded-md overflow-hidden bg-muted border border-border flex items-center justify-center">
                       {banner.banner_image ? (

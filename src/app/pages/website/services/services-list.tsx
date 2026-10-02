@@ -19,9 +19,11 @@ import CreateButton from "@/components/custom/create-button";
 import Header from "@/components/custom/header";
 import PaginationCustom from "@/components/custom/pagination";
 import { useAdminPermission } from "@/helper/use-admin-permission";
+import useSerial from "@/helper/use-serial";
 
 export default function ServicesListPage() {
   const [page, setPage] = useState(1);
+  const serial = useSerial(page, 10);
   const [searchTerm, setSearchTerm] = useState("");
   const { data, isLoading, refetch } = useGetServicesForAdmin({ page, limit: 10, searchterm: searchTerm });
   const { can } = useAdminPermission();
@@ -60,6 +62,7 @@ export default function ServicesListPage() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Service Info</TableHead>
                   <TableHead className="font-semibold text-center">Category</TableHead>
                   <TableHead className="font-semibold text-center">Status</TableHead>
@@ -70,8 +73,9 @@ export default function ServicesListPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((item: any) => (
+                {items.map((item: any, index: number) => (
                   <TableRow key={item._id} className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0">
+                    <TableCell className="text-center font-medium text-muted-foreground">{serial(index)}</TableCell>
                     <TableCell>
                       <div className="flex items-center gap-3">
                         {item.icon && <img src={item.icon} alt={item.title} className="w-10 h-10 rounded object-cover border border-border" />}

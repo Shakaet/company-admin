@@ -12,10 +12,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useAdminPermission } from "@/helper/use-admin-permission";
 import { useDebounce } from "@/hooks/use-debounce";
 import { DateFormat } from "@/hooks/use-date-format";
+import useSerial from "@/helper/use-serial";
 
 export default function ContactListPage() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+  const serial = useSerial(page, limit);
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search);
   const { can } = useAdminPermission();
@@ -61,6 +63,7 @@ export default function ContactListPage() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="border-b border-border bg-muted/50 hover:bg-muted/50">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Contact</TableHead>
                   <TableHead className="font-semibold">Inquiry</TableHead>
                   <TableHead className="font-semibold">Service</TableHead>
@@ -72,8 +75,9 @@ export default function ContactListPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {contacts.map((contact) => (
+                {contacts.map((contact, index) => (
                   <TableRow key={contact._id} className="border-b border-border/50 transition-colors last:border-0 hover:bg-muted/30">
+                    <TableCell className="text-center font-medium text-muted-foreground">{serial(index)}</TableCell>
                     <TableCell>
                       <div className="space-y-1">
                         <p className="font-medium">{contact.name}</p>

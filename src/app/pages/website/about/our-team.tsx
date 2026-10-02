@@ -85,6 +85,7 @@ export default function OurTeamPage() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Member</TableHead>
                   <TableHead className="font-semibold text-center">Socials</TableHead>
                   <TableHead className="font-semibold text-center">Status</TableHead>
@@ -93,11 +94,12 @@ export default function OurTeamPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((item: any) => (
+                {items.map((item: any, index: number) => (
                   <TableRow
                     key={item._id}
                     className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0"
                   >
+                    <TableCell className="text-center font-medium text-muted-foreground">{index + 1}</TableCell>
                     <TableCell>
                       <div className="flex items-center gap-3">
                         <Avatar className="w-10 h-10 border border-border">

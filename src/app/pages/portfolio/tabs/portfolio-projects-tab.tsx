@@ -17,9 +17,11 @@ import DeleteButton from "@/components/custom/delete-button";
 import SearchInput from "@/components/custom/search-input";
 import CreateButton from "@/components/custom/create-button";
 import PaginationCustom from "@/components/custom/pagination";
+import useSerial from "@/helper/use-serial";
 
 export default function PortfolioProjectsTab() {
   const [page, setPage] = useState(1);
+  const serial = useSerial(page, 10);
   const [search, setSearch] = useState("");
   const { data, isLoading, refetch } = useGetProjectsForAdmin({ page, limit: 10, searchterm: search });
   const { can } = useAdminPermission();
@@ -53,6 +55,7 @@ export default function PortfolioProjectsTab() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Project</TableHead>
                   <TableHead className="font-semibold text-center">Category</TableHead>
                   <TableHead className="font-semibold text-center">Client</TableHead>
@@ -64,8 +67,9 @@ export default function PortfolioProjectsTab() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((item: any) => (
+                {items.map((item: any, index: number) => (
                   <TableRow key={item._id} className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0">
+                    <TableCell className="text-center font-medium text-muted-foreground">{serial(index)}</TableCell>
                     <TableCell>
                       <div className="flex items-center gap-3">
                         {item.image && <img src={item.image} alt={item.title} className="w-10 h-10 rounded object-cover border border-border" />}

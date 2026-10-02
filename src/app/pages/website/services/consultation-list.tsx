@@ -8,9 +8,11 @@ import { DateFormat } from "@/hooks/use-date-format";
 import TableSkeleton from "@/components/skeleton/table-skeleton";
 import Header from "@/components/custom/header";
 import PaginationCustom from "@/components/custom/pagination";
+import useSerial from "@/helper/use-serial";
 
 export default function ConsultationListPage() {
   const [page, setPage] = useState(1);
+  const serial = useSerial(page, 10);
   const { data, isLoading } = useGetConsultationsForAdmin({ page, limit: 10 });
   const { can } = useAdminPermission();
   const { mutate: updateStatus } = useUpdateConsultationStatus();
@@ -37,6 +39,7 @@ export default function ConsultationListPage() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Client Details</TableHead>
                   <TableHead className="font-semibold text-center">Service</TableHead>
                   <TableHead className="font-semibold">Project Info</TableHead>
@@ -45,8 +48,9 @@ export default function ConsultationListPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((item: any) => (
+                {items.map((item: any, index: number) => (
                   <TableRow key={item._id} className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0">
+                    <TableCell className="text-center font-medium text-muted-foreground">{serial(index)}</TableCell>
                     <TableCell>
                       <div className="space-y-1">
                         <p className="font-medium">{item.name}</p>

@@ -83,6 +83,7 @@ export default function StatsTab() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Label</TableHead>
                   <TableHead className="font-semibold text-center">Value</TableHead>
                   <TableHead className="font-semibold text-center">Status</TableHead>
@@ -91,11 +92,12 @@ export default function StatsTab() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((stat: any) => (
+                {items.map((stat: any, index: number) => (
                   <TableRow
                     key={stat._id}
                     className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0"
                   >
+                    <TableCell className="text-center font-medium text-muted-foreground">{index + 1}</TableCell>
                     <TableCell className="font-medium">{stat.label}</TableCell>
                     <TableCell className="text-center text-primary font-bold">
                       {stat.value}

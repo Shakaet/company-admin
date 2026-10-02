@@ -25,6 +25,7 @@ import { useAdminPermission } from "@/helper/use-admin-permission";
 import { DateFormat } from "@/hooks/use-date-format";
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import useSerial from "@/helper/use-serial";
 
 const statusColors: Record<
   string,
@@ -38,6 +39,7 @@ const statusColors: Record<
 
 export default function CareerApplicationsTab() {
   const [page, setPage] = useState(1);
+  const serial = useSerial(page, 10);
   const { data, isLoading } = useGetApplicationsForAdmin({ page, limit: 10 });
   const { can } = useAdminPermission();
   const { mutate: updateStatus } = useUpdateApplicationStatus();
@@ -73,6 +75,7 @@ export default function CareerApplicationsTab() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Applicant</TableHead>
                   <TableHead className="font-semibold">Job Applied</TableHead>
                   <TableHead className="font-semibold text-center">Experience</TableHead>
@@ -82,11 +85,12 @@ export default function CareerApplicationsTab() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((item: any) => (
+                {items.map((item: any, index: number) => (
                   <TableRow
                     key={item._id}
                     className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0"
                   >
+                    <TableCell className="text-center font-medium text-muted-foreground">{serial(index)}</TableCell>
                     <TableCell>
                       <p className="font-medium">{item.fullName}</p>
                       <p className="text-xs text-muted-foreground">{item.email}</p>

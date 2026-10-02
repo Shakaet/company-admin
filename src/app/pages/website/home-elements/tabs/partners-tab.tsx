@@ -83,6 +83,7 @@ export default function PartnersTab() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Partner Name</TableHead>
                   <TableHead className="font-semibold text-center">Status</TableHead>
                   <TableHead className="font-semibold text-center">Created At</TableHead>
@@ -90,11 +91,12 @@ export default function PartnersTab() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((item: any) => (
+                {items.map((item: any, index: number) => (
                   <TableRow
                     key={item._id}
                     className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0"
                   >
+                    <TableCell className="text-center font-medium text-muted-foreground">{index + 1}</TableCell>
                     <TableCell className="font-medium">{item.name}</TableCell>
                     <TableCell>
                       <div className="flex items-center justify-center space-x-2">

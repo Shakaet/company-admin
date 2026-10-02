@@ -32,9 +32,11 @@ import PaginationCustom from "@/components/custom/pagination";
 import { useAdminPermission } from "@/helper/use-admin-permission";
 import { DateFormat } from "@/hooks/use-date-format";
 import { Edit2 } from "lucide-react";
+import useSerial from "@/helper/use-serial";
 
 export default function PricingGuaranteesTab() {
   const [page, setPage] = useState(1);
+  const serial = useSerial(page, 10);
   const { data, isLoading, refetch } = useGetGuaranteesForAdmin({ page, limit: 10 });
   const { can } = useAdminPermission();
   const { mutateAsync: deleteItem } = useDeleteGuarantee();
@@ -72,6 +74,7 @@ export default function PricingGuaranteesTab() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Label</TableHead>
                   <TableHead className="font-semibold">Description</TableHead>
                   <TableHead className="font-semibold text-center">Icon</TableHead>
@@ -83,11 +86,12 @@ export default function PricingGuaranteesTab() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((item: any) => (
+                {items.map((item: any, index: number) => (
                   <TableRow
                     key={item._id}
                     className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0"
                   >
+                    <TableCell className="text-center font-medium text-muted-foreground">{serial(index)}</TableCell>
                     <TableCell className="font-medium">{item.label}</TableCell>
                     <TableCell className="text-sm text-muted-foreground max-w-[240px] truncate">
                       {item.desc}

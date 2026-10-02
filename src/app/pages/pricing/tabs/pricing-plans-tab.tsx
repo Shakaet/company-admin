@@ -11,6 +11,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useAdminPermission } from "@/helper/use-admin-permission";
 import { DateFormat } from "@/hooks/use-date-format";
 import { Edit2, X } from "lucide-react";
+import useSerial from "@/helper/use-serial";
 import TableSkeleton from "@/components/skeleton/table-skeleton";
 import DeleteButton from "@/components/custom/delete-button";
 import SearchInput from "@/components/custom/search-input";
@@ -19,6 +20,7 @@ import PaginationCustom from "@/components/custom/pagination";
 
 export default function PricingPlansTab() {
   const [page, setPage] = useState(1);
+  const serial = useSerial(page, 10);
   const [search, setSearch] = useState("");
   const { data, isLoading, refetch } = useGetPlansForAdmin({ page, limit: 10, searchterm: search });
   const { can } = useAdminPermission();
@@ -50,6 +52,7 @@ export default function PricingPlansTab() {
             <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50 hover:bg-muted/50 border-b border-border">
+                  <TableHead className="w-16 text-center font-semibold">#</TableHead>
                   <TableHead className="font-semibold">Plan Info</TableHead>
                   <TableHead className="font-semibold text-center">Price (Monthly)</TableHead>
                   <TableHead className="font-semibold text-center">Popular</TableHead>
@@ -61,8 +64,9 @@ export default function PricingPlansTab() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {items.map((item: any) => (
+                {items.map((item: any, index: number) => (
                   <TableRow key={item._id} className="hover:bg-muted/30 transition-colors border-b border-border/50 last:border-0">
+                    <TableCell className="text-center font-medium text-muted-foreground">{serial(index)}</TableCell>
                     <TableCell>
                       <p className="font-medium">{item.name}</p>
                       <p className="text-xs text-muted-foreground">{item.tagline}</p>
