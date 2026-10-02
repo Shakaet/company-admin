@@ -3,6 +3,9 @@ import PrivateRoute from "../private-route/private.route";
 
 const BannerList = lazy(() => import("@/app/pages/website/banner/banner-list"));
 const HomeElementsPage = lazy(() => import("@/app/pages/website/home-elements/home-elements"));
+const OurCompanyPage = lazy(() => import("@/app/pages/website/about/our-company"));
+const OurTeamPage = lazy(() => import("@/app/pages/website/about/our-team"));
+const FounderMessagePage = lazy(() => import("@/app/pages/website/about/founder-message"));
 
 const WebsiteRoutes = [
   {
@@ -15,6 +18,18 @@ const WebsiteRoutes = [
       {
         path: "website/home-elements",
         element: <HomeElementsPage />,
+      },
+      {
+        path: "website/about/company",
+        element: <OurCompanyPage />,
+      },
+      {
+        path: "website/about/team",
+        element: <OurTeamPage />,
+      },
+      {
+        path: "website/about/founder-message",
+        element: <FounderMessagePage />,
       },
     ],
   },
