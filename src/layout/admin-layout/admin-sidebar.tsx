@@ -68,14 +68,14 @@ const AdminSidebar = ({ siteSettings }: AdminSidebarProps) => {
       <SidebarHeader className="flex justify-center px-1 py-3 text-lg font-semibold">
         {isCollapsed ? (
           <img
-            src={siteSettings?.logo || "logo.png"}
+            src={siteSettings?.logo || "logo2.png"}
             alt={siteSettings?.title || "Logo"}
             className="h-10 w-10 rounded-full object-cover"
           />
         ) : (
           <div>
             <img
-              src={siteSettings?.logo || "logo.png"}
+              src={siteSettings?.logo || "logo2.png"}
               alt={siteSettings?.title || "Logo"}
               className="h-40 w-full object-contain"
             />
