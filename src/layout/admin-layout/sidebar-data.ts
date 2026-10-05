@@ -1,4 +1,4 @@
-import { LayoutDashboard, ShieldCheck, Users, Globe, ImagePlus, Info, Building2, UserCircle, MessageSquare, Layers, DollarSign, Briefcase } from "lucide-react";
+import { LayoutDashboard, ShieldCheck, Users, Globe, ImagePlus, Info, Building2, UserCircle, MessageSquare, Layers, DollarSign, Briefcase, Settings } from "lucide-react";
 
 export const sidebarMenu = [
   // DASHBOARD
@@ -52,6 +52,12 @@ export const sidebarMenu = [
         url: "/website/home-elements",
         icon: Globe,
         permission: "home_show",
+      },
+      {
+        title: "Site Settings",
+        url: "/website/site-setting",
+        icon: Settings,
+        permission: "site_setting_show",
       },
     ],
   },

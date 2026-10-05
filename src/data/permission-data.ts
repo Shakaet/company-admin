@@ -260,6 +260,23 @@ const PermissionData = [
       },
     ],
   },
+
+  // ! Site Setting Management
+  {
+    Name: "Site Setting Management",
+    Type: [
+      {
+        type_name: "View Site Setting",
+        type_value: "site_setting_show",
+        description: "View site settings (logo, contact, social links, footer)",
+      },
+      {
+        type_name: "Update Site Setting",
+        type_value: "site_setting_create",
+        description: "Update site settings (logo upload, email, phone, social links, footer)",
+      },
+    ],
+  },
 ];
 
 export default PermissionData;
