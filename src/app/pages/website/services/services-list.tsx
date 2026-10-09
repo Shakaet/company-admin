@@ -204,6 +204,8 @@ const ServiceFormModal = ({ open, onClose, item }: { open: boolean; onClose: (va
                     <option value="Digital Marketing">Digital Marketing</option>
                     <option value="SEO & Content">SEO & Content</option>
                     <option value="Custom Software">Custom Software</option>
+                    <option value="Creative & Digital Solutions">Creative &amp; Digital Solutions</option>
+                    <option value="DevOps & Cloud Solutions">DevOps &amp; Cloud Solutions</option>
                   </select>
                 </div>
                 <div className="space-y-2">
