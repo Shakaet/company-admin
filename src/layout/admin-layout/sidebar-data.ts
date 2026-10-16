@@ -1,4 +1,4 @@
-import { LayoutDashboard, ShieldCheck, Users, Globe, ImagePlus, Info, Building2, UserCircle, MessageSquare, Layers, DollarSign, Briefcase, Settings } from "lucide-react";
+import { LayoutDashboard, ShieldCheck, Users, Globe, ImagePlus, Info, Building2, UserCircle, MessageSquare, Layers, DollarSign, Briefcase, Settings, Newspaper } from "lucide-react";
 
 export const sidebarMenu = [
   // DASHBOARD
@@ -146,6 +146,20 @@ export const sidebarMenu = [
         url: "/career",
         icon: Briefcase,
         permission: "career_show",
+      },
+    ],
+  },
+
+  // CONTACT MANAGEMENT
+  {
+    title: "Blog",
+    icon: Newspaper,
+    items: [
+      {
+        title: "Blog Posts",
+        url: "/blog",
+        icon: Newspaper,
+        permission: "blog_show",
       },
     ],
   },

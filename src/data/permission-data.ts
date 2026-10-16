@@ -192,6 +192,33 @@ const PermissionData = [
 
   // ! Service Management
   {
+    Name: "Blog Management",
+    Type: [
+      {
+        type_name: "View Blog",
+        type_value: "blog_show",
+        description: "View blog posts",
+      },
+      {
+        type_name: "Create Blog",
+        type_value: "blog_create",
+        description: "Create new blog posts",
+      },
+      {
+        type_name: "Update Blog",
+        type_value: "blog_update",
+        description: "Update existing blog posts",
+      },
+      {
+        type_name: "Delete Blog",
+        type_value: "blog_delete",
+        description: "Delete blog posts",
+      },
+    ],
+  },
+
+  // ! Service Management
+  {
     Name: "Service Management",
     Type: [
       {
